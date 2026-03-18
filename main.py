@@ -30,6 +30,8 @@ def userInput():
         addBook()
     elif user_input == 2:
         addMember()
+    elif user_input == 3:
+        displayBooks()
 
 
 
@@ -73,11 +75,16 @@ def addBook():
     book["Status"] = book_status
 
     book_list.append(book)
+    print("""----------------------------------
+                   book successfully added     
+    --------------------------------------------""")
+    userInput()
 
 
 
     print(book)
     print(book_list)
+    userInput()
 
 
 # Register a Member
@@ -96,19 +103,26 @@ def addMember():
     else:
         member["member_id"] = member_id
         member_name = input("Name:")
-        member[member_name] = member_name
-
-
-
-
-
+        member["member_name"] = member_name
     print(member)
     member_list.append(member)
     print(member_list)
-
-    
-    
     userInput()
+
+
+
+
+# display all books 
+def displayBooks():
+    print("--------------------All Books Available--------------------- ")
+    for i in range(len(book_list)):
+        # print(book_list[i].keys())
+        print("Book ID:",book_list[i]["book_id"])
+        print("Title:",book_list[i]["book_title"])
+        print("Book Author:",book_list[i]["book_author"])
+        print("Genre:",book_list[i]["Genre"])
+        print("Status:",book_list[i]["Status"])
+        print("-----------------------------------------------------------")
 
 
 
