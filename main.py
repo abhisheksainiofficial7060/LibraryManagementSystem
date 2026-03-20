@@ -32,6 +32,9 @@ def userInput():
         addMember()
     elif user_input == 3:
         displayBooks()
+    elif user_input == 4:
+        searchBook()
+
 
 
 
@@ -82,9 +85,9 @@ def addBook():
 
 
 
-    print(book)
-    print(book_list)
-    userInput()
+    # print(book)
+    # print(book_list)
+    # userInput()
 
 
 # Register a Member
@@ -127,6 +130,39 @@ def displayBooks():
 
 
 
+def searchBook():
+    # print("press 1 to search book by id or press 2 to search by title:")
+    choice = int(input("press 1 to search book by id or press 2 to search by title:"))
+    if choice == 1:
+        book_id = int(input("Book ID:"))
+        for i in range(len(book_list)):
+            if book_list[i]["book_id"] == book_id:
+                print("----------------------------------")
+                print("Book is found:",book_id)
+                print("----------------------------------")
+                print("Book ID:",book_list[i]["book_id"])
+                print("Title:",book_list[i]["book_title"])
+                print("Book Author:",book_list[i]["book_author"])
+                print("Genre:",book_list[i]["Genre"])
+                print("Status:",book_list[i]["Status"])
+                print("-----------------------------------------------------------")
 
+    elif choice ==2:
+        book_title = input("Book Title:")
+        for i in range(len(book_list)):
+            if book_list[i]["book_title"] == book_title:
+                print("----------------------------------")
+                print("Book is found:",book_title)
+                print("----------------------------------")
+                print("Book ID:",book_list[i]["book_id"])
+                print("Title:",book_list[i]["book_title"])
+                print("Book Author:",book_list[i]["book_author"])
+                print("Genre:",book_list[i]["Genre"])
+                print("Status:",book_list[i]["Status"])
+                print("-----------------------------------------------------------")
+                
+    else:
+        print("Invalid Choice:")
+        searchBook()
 
 userInput()
