@@ -34,6 +34,8 @@ def userInput():
         displayBooks()
     elif user_input == 4:
         searchBook()
+    elif user_input == 5:
+        borrowBook()
 
 
 
@@ -160,9 +162,72 @@ def searchBook():
                 print("Genre:",book_list[i]["Genre"])
                 print("Status:",book_list[i]["Status"])
                 print("-----------------------------------------------------------")
+        
                 
     else:
         print("Invalid Choice:")
         searchBook()
+
+
+# Borrow a Book functionality
+"""
+5️⃣ Borrow a Book
+
+A member should be able to borrow a book if:
+
+The book exists
+
+The book is available
+
+When borrowed:
+
+Update book availability
+
+Add book ID to the member’s borrowed book list"""
+
+def borrowBook():
+    print("-----------------------------Borrow a Book -------------------------------------------------")
+    choice = int(input("Press 1 to borrow by using BOOK_ID and Press 2 to borrow by using BOOK_NAME:"))
+    count = 0
+    if choice == 1:
+        # print("Search by using book_id")
+        book_id = int(input("Book_ID:"))
+        for i in range(len(book_list)):
+            if book_list[i]["book_id"] == book_id:
+                count+=1
+                print("book is founded:")
+                if book_list[i]["book_quantity"]>0:
+                    print("book is available for borrowing:")
+                    print("****************************************")
+                    inp1 = int(input("press 1 to borrow or 2 to exit:"))
+                    count1 = 0
+                    if inp1 == 1:
+                        member_id = int(input("MEMBER_ID:"))
+                        for i in range(len(member_list)):
+                            if member_list[i]["member_id"] == member_id:
+                                count+=1
+                                print("member is exist")
+                                pass
+                            
+                        if count1 == 0:
+                            print("Member is not exist:")
+                    else:
+                        userInput()
+
+                else:
+                    print("book is not available for borrowing:")
+        
+        if count==0:
+            print("Book is not added in stock:")
+        
+    elif choice == 2:
+        print("serach by using book_name")
+        pass
+    else:
+        print("Invalid choice")
+        borrowBook()
+    print("---------------------------------------------------------------------------------------------")
+
+
 
 userInput()
